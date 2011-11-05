@@ -1,0 +1,50 @@
+﻿@{
+    var lang = "ja";
+}
+<!DOCTYPE html>
+
+<html lang="@lang">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=640" />
+        
+        <title>Amazon2Html</title>
+        
+        <link rel="shortcut icon" href="http://example.com/favicon.ico"
+              type="image/vnd.microsoft.icon" />
+        <link rel="icon" href="http://example.com/favicon.ico"
+              type="image/vnd.microsoft.icon" />
+        
+        <link href="/Styles/Html5Reset.css" rel="stylesheet" type="text/css" />
+        <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
+        <link href="/Styles/NuGet.css" rel="stylesheet" type="text/css" />
+        @Amazon2Html.IncludeStyleSheet()
+
+        <script type="text/javascript"
+                src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js">
+        </script>
+        
+        <link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css"
+              type="text/css" rel="stylesheet" />
+        <script type="text/javascript"
+                src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+    </head>
+
+    <body onload="$('pre + code').addClass('prittyprint'); prettyPrint();" >
+        
+        <nav id="global-nav">
+            <p>daruyanagi.net</p>
+            <ul>
+                <li><a href="http://daruyanagi.net/">Home</a></li>
+                <li><a href="http://blog.daruyanagi.net/">Blog</a></li>
+            </ul>
+        </nav>
+        
+        @RenderBody()
+
+        <footer>
+            <p>&copy; daruyanagi 2011</p>
+        </footer>
+    </body>
+
+</html>

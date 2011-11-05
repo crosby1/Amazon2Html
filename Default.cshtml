@@ -1,0 +1,49 @@
+﻿@{
+    var url = Request["url"];
+
+    if (url == @"/" || string.IsNullOrEmpty(url)) 
+    {
+        url = @"http://www.amazon.co.jp/gp/product/B005OD1DK4/ref=s9_ri_bw_g23_ir02?pf_rd_m=AN1VRQENFRJN5&pf_rd_s=center-4&pf_rd_r=10X0BPR7D3ZYMKCSHS5S&pf_rd_t=101&pf_rd_p=107147189&pf_rd_i=3496441";
+    }
+
+    Layout = "/_SiteLayout.cshtml";
+}
+        
+<h1>Amazon2Flickr</h1>
+<p>This is a NuGet to grab Amazon's assosiate tag from Amazon's goods page url. Please read <a href="http://blog.daruyanagi.net/tags/amazon2html">my blog</a>, too.</p>
+<p>Please get from <a href="http://nuget.org/List/Packages/Amazon2Html">NuGet Gallery</a>, or install by NuGet. You can obtain source code from <a href="https://github.com/daruyanagi/Amazon2Html">GitHub</a>.</p>
+        
+<div class="commandWrapper">
+    <div class="commandPrompt">
+        <p class="command">PM&#62; Install-Package Amazon2Html</p>
+    </div>
+</div>
+        
+<h2>How to Use</h2>
+<p>Please initialize before use.</p>
+<pre class="prettyprint"><code>## _AppStart.cshtml
+@@{
+    Amazon2Html.AccessKeyId = "AKIA****KY5GJY7W5JRA";
+    Amazon2Html.SecretKey = "IFfXsML1K****x77ZwXbVsQ7nGwOhE5yGgfkCuhM";
+}
+
+## View
+@@Amazon2Html.GetHtml(url)
+
+</code></pre>
+        
+<h2>Test my NuGet</h2>
+<form action="/" method="get">
+    <p>Please enter url of flickr's photo page.</p>
+    <p><input type="text" name="url" value="@url" /></p>
+    <p><input type="submit" /></p>
+</form>
+        
+<h2>Result</h2>
+
+<h3>HTML Code</h3>
+@Amazon2Html.GetHtml(url)
+
+<p><textarea>@Amazon2Html.GetHtml(url)</textarea></p>
+
+
